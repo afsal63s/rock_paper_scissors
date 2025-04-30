@@ -53,8 +53,6 @@ function playRound(human,computer){
 }
 
 
-
-
 function playGame(){
     for(let i=1; i<=5 ;i++){
         let computerSelection=getComputerChoice();
