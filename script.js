@@ -15,56 +15,60 @@ function getComputerChoice(){
     return randChoice;
 }
 
-function getHumanChoice(){
-    let humanChoice=prompt("Choose btwn rock ,paper or scissors :");
-    return humanChoice;
-}
-
-
 
 function playRound(human){
     let computer=getComputerChoice();
     if(human=="rock" && computer=="paper"){
-        console.log("You Lose , Paper beats Rock.");
-        computerScore++;
+        result.textContent="You Lose , Paper beats Rock.";
+        score.textContent=`You: ${humanScore} Computer: ${++computerScore}`;
     }
     else if(human=="rock" && computer=="scissors"){
-        console.log("You Win , Rock beats Scissors.");
-        humanScore++;
+        result.textContent="You Win , Rock beats Scissors.";
+        score.textContent=`You: ${++humanScore} Computer: ${computerScore}`;
     }
     else if(human=="paper" && computer=="rock"){
-        console.log("You Win , Paper beats Rock.");
-        humanScore++;
+        result.textContent="You Win , Paper beats Rock.";
+        score.textContent=`You: ${++humanScore} Computer: ${computerScore}`;
     }
     else if(human=="paper" && computer=="scissors"){
-        console.log("You Lose , Scissors beats Paper.");
-        computerScore++;
+        result.textContent="You Lose , Scissors beats Paper.";
+        score.textContent=`You: ${humanScore} Computer: ${++computerScore}`;
     }
     else if(human=="scissors" && computer=="rock"){
-        console.log("You Lose , Rock beats Scissors.");
-        computerScore++;
+        result.textContent="You Lose , Rock beats Scissors.";
+        score.textContent=`You: ${humanScore} Computer: ${++computerScore}`;
     }
     else if(human=="scissors" && computer=="paper"){
-        console.log("You win , Scissors beats Paper.");
-        humanScore++;
+        result.textContent="You win , Scissors beats Paper.";
+        score.textContent=`You: ${++humanScore} Computer: ${computerScore}`;
     }
     else{
-        console.log("Tie!, Both took same.");
+        result.textContent="Tie!, Both took same.";
     }
+
+    if(humanScore==5 || computerScore==5){
+        over.textContent="GAME OVER";
+        winner.textContent=(humanScore==5) ? "You Won the game, Congrats!!"
+                                            : "Computer won, Better luck next time.";
+    }
+    
 }
 
 const btnRock=document.querySelector("#rock-btn");
 const btnPaper=document.querySelector("#paper-btn");
 const btnScissors=document.querySelector("#scissors-btn");
+const score = document.querySelector("#score-display");
+const final=document.querySelector("#final");
+const result = document.querySelector("#result-game");
+const over = document.createElement("h3");
+final.appendChild(over);
+const winner = document.createElement("p");
+final.appendChild(winner);
+
 
 btnRock.addEventListener("click",()=>playRound(btnRock.value));
 btnPaper.addEventListener("click",()=>playRound(btnPaper.value));
 btnScissors.addEventListener("click",()=>playRound(btnScissors.value));
-
-
-
-      //  
-       // let humanSelection=getHumanChoice();
 
 
 
