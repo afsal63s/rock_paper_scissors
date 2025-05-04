@@ -22,7 +22,8 @@ function getHumanChoice(){
 
 
 
-function playRound(human,computer){
+function playRound(human){
+    let computer=getComputerChoice();
     if(human=="rock" && computer=="paper"){
         console.log("You Lose , Paper beats Rock.");
         computerScore++;
@@ -52,28 +53,21 @@ function playRound(human,computer){
     }
 }
 
+const btnRock=document.querySelector("#rock-btn");
+const btnPaper=document.querySelector("#paper-btn");
+const btnScissors=document.querySelector("#scissors-btn");
 
-function playGame(){
-    for(let i=1; i<=5 ;i++){
-        let computerSelection=getComputerChoice();
-        let humanSelection=getHumanChoice();
-       setTimeout( playRound(humanSelection,computerSelection),2000);
-    }
-}
+btnRock.addEventListener("click",()=>playRound(btnRock.value));
+btnPaper.addEventListener("click",()=>playRound(btnPaper.value));
+btnScissors.addEventListener("click",()=>playRound(btnScissors.value));
 
-function finalResult(){
-    playGame();
-    if(humanScore>computerScore){
-        console.log(`You won the game! You: ${humanScore}, Computer: ${computerScore} `);
-    }
-    else if(humanScore<computerScore){
-        console.log(`You Lose, Better Luck Next Time. You: ${humanScore}, Computer: ${computerScore}`)
-    }else{
-        console.log(`This game is tie!!! You: ${humanScore}, Computer: ${computerScore}`);
-    }
-}
 
-finalResult();
+
+      //  
+       // let humanSelection=getHumanChoice();
+
+
+
 
 
 
